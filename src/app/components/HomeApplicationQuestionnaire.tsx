@@ -3,11 +3,11 @@ import { Mic } from 'lucide-react';
 import { Card } from '@/app/components/ui/card';
 import { Button } from '@/app/components/ui/button';
 
-interface QuestionnairePageProps {
+interface HomeApplicationQuestionnaireProps {
   onNavigate: (page: string) => void;
 }
 
-export function QuestionnairePage({ onNavigate }: QuestionnairePageProps) {
+export function HomeApplicationQuestionnaire({ onNavigate }: HomeApplicationQuestionnaireProps) {
   const [referenceNumber, setReferenceNumber] = useState('');
 
   // Generate random 12-digit reference number on component mount
@@ -29,20 +29,20 @@ export function QuestionnairePage({ onNavigate }: QuestionnairePageProps) {
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="mb-8 text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Mic className="w-10 h-10 text-blue-600" />
+            <Mic className="w-10 h-10 text-red-600" />
             <h1 className="text-4xl text-gray-800">Voice Verification Questionnaire</h1>
           </div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            To complete your claim submission, please answer a few additional questions using the voice 
-            questionnaire below. This helps expedite the processing of your claim.
+            To complete your home insurance application, please answer a few additional questions using the voice 
+            questionnaire below. This helps us process your application quickly and securely.
           </p>
         </div>
 
         {/* Reference Number Display */}
-        <Card className="p-6 mb-8 max-w-2xl mx-auto bg-blue-50 border-blue-200">
+        <Card className="p-6 mb-8 max-w-2xl mx-auto bg-red-50 border-red-200">
           <div className="text-center">
-            <p className="text-sm text-gray-600 mb-2">Your Claim Reference Number:</p>
-            <p className="text-2xl text-blue-600 tracking-wider font-mono">{referenceNumber}</p>
+            <p className="text-sm text-gray-600 mb-2">Your Application Reference Number:</p>
+            <p className="text-2xl text-red-600 tracking-wider font-mono">{referenceNumber}</p>
             <p className="text-sm text-gray-500 mt-2">Please keep this number for your records</p>
           </div>
         </Card>
@@ -52,7 +52,7 @@ export function QuestionnairePage({ onNavigate }: QuestionnairePageProps) {
           <div id="questionnaire-container" className="shadow-2xl rounded-lg overflow-hidden">
             <iframe 
               id="voice-questionnaire"
-              src={`https://guide.clearspeed.com/us?embedded=true&questionnaire_id=019bbc9b-da9c-752e-b677-e9009309b4fd&reference_number=${referenceNumber}`}
+              src={`https://guide.clearspeed.com/us?embedded=true&questionnaire_id=019bbc9a-d8d8-745f-9e84-984d13c8e7cc&reference_number=${referenceNumber}`}
               width="420"
               height="640"
               allow="microphone; camera; geolocation; display-capture; fullscreen; autoplay"
@@ -69,20 +69,20 @@ export function QuestionnairePage({ onNavigate }: QuestionnairePageProps) {
             <h3 className="text-lg mb-4 text-gray-800">What to Expect:</h3>
             <ul className="space-y-3 text-gray-600">
               <li className="flex items-start gap-3">
-                <span className="text-blue-600 flex-shrink-0">1.</span>
-                <span>You'll be asked a series of questions about your claim and personal information</span>
+                <span className="text-red-600 flex-shrink-0">1.</span>
+                <span>You'll be asked a series of questions to verify your identity and application details</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-blue-600 flex-shrink-0">2.</span>
+                <span className="text-red-600 flex-shrink-0">2.</span>
                 <span>Please answer each question clearly using your microphone</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-blue-600 flex-shrink-0">3.</span>
+                <span className="text-red-600 flex-shrink-0">3.</span>
                 <span>The entire process typically takes 3-5 minutes</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-blue-600 flex-shrink-0">4.</span>
-                <span>Once completed, your claim will be submitted for review</span>
+                <span className="text-red-600 flex-shrink-0">4.</span>
+                <span>Once completed, your application will be processed and you'll receive confirmation</span>
               </li>
             </ul>
           </Card>
@@ -91,25 +91,25 @@ export function QuestionnairePage({ onNavigate }: QuestionnairePageProps) {
             <h3 className="text-lg mb-2 text-gray-800">Need Help?</h3>
             <p className="text-gray-600">
               If you experience any technical difficulties or have questions about the questionnaire, 
-              please call our 24/7 claims support line at <span className="font-semibold">1-800-AFFINITY</span> 
-              {' '}and reference your claim number: <span className="font-mono font-semibold">{referenceNumber}</span>
+              please call our customer service line at <span className="font-semibold">1-800-AFFINITY</span> 
+              {' '}and reference your application number: <span className="font-mono font-semibold">{referenceNumber}</span>
             </p>
           </div>
 
           {/* Action Buttons */}
           <div className="flex gap-4 mt-8">
             <Button 
-              onClick={() => onNavigate('auto-claim')}
+              onClick={() => onNavigate('home-quote-results')}
               variant="outline"
               className="flex-1"
             >
               Back
             </Button>
             <Button 
-              onClick={() => onNavigate('auto-insurance')}
+              onClick={() => onNavigate('home-insurance')}
               className="flex-1 bg-green-600 hover:bg-green-700"
             >
-              Submit Claim
+              Complete Application
             </Button>
           </div>
         </div>
